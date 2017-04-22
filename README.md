@@ -21,6 +21,6 @@ file path or a URL to a word document:
 
 ```r
 library(antiword)
-text <- antiword("www.hrusa.org/thisismyhome/project/documents/UDHR-PlainEnglishVersion.doc")
+text <- antiword("http://www.hrusa.org/thisismyhome/project/documents/UDHR-PlainEnglishVersion.doc")
 cat(text)
 ```

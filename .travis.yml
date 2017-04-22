@@ -20,6 +20,11 @@ matrix:
 r_github_packages:
   - jimhester/covr
 
+addons:
+  apt:
+    packages:
+    - libapparmor-dev
+
 warnings_are_errors: true
 
 notifications:
