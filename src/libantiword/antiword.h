@@ -191,43 +191,14 @@
 #define FONT_SANS_SERIF_ITALIC		"Helvetica-Oblique"
 #define FONT_SANS_SERIF_BOLDITALIC	"Helvetica-BoldOblique"
 /* The name of the antiword directories and the font information file */
-#if defined(__dos)
-#define GLOBAL_ANTIWORD_DIR	"C:\\antiword"
-#define ANTIWORD_DIR		"antiword"
-#define FONTNAMES_FILE		"fontname.txt"
-#elif defined(__amigaos)
-#define GLOBAL_ANTIWORD_DIR	"SYS:.antiword"
-#define ANTIWORD_DIR		".antiword"
-#define FONTNAMES_FILE		"fontnames"
-#elif defined(N_PLAT_NLM)
-#define GLOBAL_ANTIWORD_DIR	"SYS:/antiword"
-#define ANTIWORD_DIR		"antiword"
-#define FONTNAMES_FILE		"fontname.txt"
-#elif defined(__vms)
-#define GLOBAL_ANTIWORD_DIR	"/usr/share/antiword"
-#define ANTIWORD_DIR		"antiword"
-#define FONTNAMES_FILE		"fontnames"
-#elif defined(__BEOS__)
-#define GLOBAL_ANTIWORD_DIR	"/boot/home/config/apps/antiword"
-#define ANTIWORD_DIR		"antiword"
-#define FONTNAMES_FILE		"fontnames"
-#elif defined(__CYGMING__)
-#define GLOBAL_ANTIWORD_DIR	"C:\\antiword"
-#define ANTIWORD_DIR		"antiword"
-#define FONTNAMES_FILE		"fontnames"
-#elif defined(__Plan9__)
-#define GLOBAL_ANTIWORD_DIR	"/sys/lib/antiword"
-#define ANTIWORD_DIR		"lib/antiword"
-#define FONTNAMES_FILE		"fontnames"
-#elif defined(__sun__)
-#define GLOBAL_ANTIWORD_DIR	"/usr/local/share/antiword"
-#define ANTIWORD_DIR		".antiword"
-#define FONTNAMES_FILE		"fontnames"
-#else	/* All others */
+
+
+/* Jeroen 2017: Hardcode local path */
 #define GLOBAL_ANTIWORD_DIR	"./share/antiword"
 #define ANTIWORD_DIR		".antiword"
 #define FONTNAMES_FILE		"fontnames"
-#endif /* __dos */
+
+
 /* The names of grouped mapping files */
 	/* ASCII */
 #define MAPPING_FILE_CP437	"cp437.txt"

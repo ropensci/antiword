@@ -8,5 +8,6 @@ src/*.so
 src/*.dll
 src/*.a
 src/*.def
+src/antiword.exe
 src/antiword
 inst
