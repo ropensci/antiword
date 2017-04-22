@@ -4,10 +4,12 @@
 \alias{antiword}
 \title{Antiword}
 \usage{
-antiword(file = NULL)
+antiword(file = NULL, format = FALSE)
 }
 \arguments{
 \item{file}{path or url to your word file}
+
+\item{format}{format the output text (-f parameter)}
 }
 \description{
 Wraps the antiword utility. Takes a path to an word file and returns

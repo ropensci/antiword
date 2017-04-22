@@ -5,16 +5,20 @@
 #'
 #' @export
 #' @param file path or url to your word file
+#' @param format format the output text (-f parameter)
 #' @examples text <- antiword("http://homepages.inf.ed.ac.uk/neilb/TestWordDoc.doc")
 #' cat(text)
-antiword <- function(file = NULL){
+antiword <- function(file = NULL, format = FALSE){
   if(length(file)){
     if(grepl("^https?://", file)){
       tmp <- tempfile(fileext = ".doc")
       utils::download.file(file, tmp, mode = "wb")
       file <- tmp
     }
-    file <- normalizePath(file, mustWork = TRUE)
+    file <- c(
+      ifelse(isTRUE(format), "-f", "-t"),
+      normalizePath(file, mustWork = TRUE)
+    )
   }
   wd <- getwd()
   on.exit(setwd(wd))
