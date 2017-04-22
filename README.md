@@ -8,6 +8,10 @@
 
 > Extract Text from Microsoft Word Documents
 
+Wraps the [AntiWord](http://www.winfield.demon.nl/) utility to extract text from 
+Microsoft Word documents. The utility only supports the old `doc` format, not the 
+new xml based `docx` format.
+
 ## Installation
 
 ```
