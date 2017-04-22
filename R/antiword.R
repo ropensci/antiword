@@ -11,7 +11,7 @@ antiword <- function(file = NULL){
   if(length(file)){
     if(grepl("^https?://", file)){
       tmp <- tempfile(fileext = ".doc")
-      utils::download.file(file, tmp)
+      utils::download.file(file, tmp, mode = "wb")
       file <- tmp
     }
     file <- normalizePath(file, mustWork = TRUE)

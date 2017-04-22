@@ -1,3 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^inst$
+^src/antiword$
+^src/antiword.exe$
