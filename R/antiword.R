@@ -9,13 +9,13 @@
 #' @examples text <- antiword("http://homepages.inf.ed.ac.uk/neilb/TestWordDoc.doc")
 #' cat(text)
 antiword <- function(file = NULL, format = FALSE){
-  if(length(file)){
+  args <- if(length(file)){
     if(grepl("^https?://", file)){
       tmp <- tempfile(fileext = ".doc")
       utils::download.file(file, tmp, mode = "wb")
       file <- tmp
     }
-    file <- c(
+    c(
       ifelse(isTRUE(format), "-f", "-t"),
       normalizePath(file, mustWork = TRUE)
     )
@@ -29,7 +29,7 @@ antiword <- function(file = NULL, format = FALSE){
   )
   out <- rawConnection(raw(0), "r+")
   on.exit(close(out), add = TRUE)
-  if(sys::exec_wait(path, file, std_out = out) == 0){
+  if(sys::exec_wait(path, args, std_out = out) == 0){
     return(rawToChar(rawConnectionValue(out)))
   }
   stop("System call to 'antiword' failed")
