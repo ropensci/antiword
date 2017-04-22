@@ -1,0 +1,28 @@
+INSTDIR=../inst/bin${R_ARCH}
+
+LIBANTIWORD	= \
+	libantiword/main_u.o libantiword/asc85enc.o libantiword/blocklist.o libantiword/chartrans.o \
+	libantiword/datalist.o libantiword/depot.o libantiword/dib2eps.o libantiword/doclist.o \
+	libantiword/fail.o libantiword/finddata.o libantiword/findtext.o libantiword/fmt_text.o \
+	libantiword/fontlist.o libantiword/fonts.o libantiword/fonts_u.o libantiword/hdrftrlist.o \
+	libantiword/imgexam.o libantiword/imgtrans.o libantiword/jpeg2eps.o libantiword/listlist.o \
+	libantiword/misc.o libantiword/notes.o libantiword/options.o libantiword/out2window.o \
+	libantiword/output.o libantiword/pdf.o libantiword/pictlist.o libantiword/png2eps.o \
+	libantiword/postscript.o libantiword/prop0.o libantiword/prop2.o libantiword/prop6.o \
+	libantiword/prop8.o libantiword/properties.o libantiword/propmod.o libantiword/rowlist.o \
+	libantiword/sectlist.o libantiword/stylelist.o libantiword/stylesheet.o libantiword/summary.o \
+	libantiword/tabstop.o libantiword/text.o libantiword/unix.o libantiword/utf8.o libantiword/word2text.o \
+	libantiword/worddos.o libantiword/wordlib.o libantiword/wordmac.o libantiword/wordole.o \
+	libantiword/wordwin.o libantiword/xmalloc.o libantiword/xml.o
+
+all: clean antiword
+
+antiword: $(LIBANTIWORD)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -o antiword $(LIBANTIWORD)
+	mkdir -p $(INSTDIR)
+	cp -f antiword $(INSTDIR)
+	cp -Rf share $(INSTDIR)
+
+clean:
+	rm -Rf $(INSTDIR)
+	rm -f $(SHLIB) $(OBJECTS) $(LIBANTIWORD) antiword
