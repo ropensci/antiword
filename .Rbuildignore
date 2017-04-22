@@ -4,4 +4,4 @@
 ^src/antiword$
 ^src/antiword.exe$
 ^appveyor\.yml$
-^travis.yml$
+^.travis.yml$
