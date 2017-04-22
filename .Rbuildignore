@@ -5,3 +5,4 @@
 ^src/antiword.exe$
 ^appveyor\.yml$
 ^.travis.yml$
+^README.md$
