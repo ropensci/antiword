@@ -7,9 +7,13 @@
 antiword(file = NULL)
 }
 \arguments{
-\item{file}{path to your word file}
+\item{file}{path or url to your word file}
 }
 \description{
 Wraps the antiword utility. Takes a path to an word file and returns
 text from the document.
+}
+\examples{
+text <- antiword("http://homepages.inf.ed.ac.uk/neilb/TestWordDoc.doc")
+cat(text)
 }
