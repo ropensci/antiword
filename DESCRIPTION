@@ -1,7 +1,7 @@
 Package: antiword
 Type: Package
 Title: Extract Text from Microsoft Word Documents
-Version: 1.0
+Version: 1.0.9000
 Authors@R: c(
     person("Jeroen", "Ooms", ,"jeroen@berkeley.edu", role = c("aut", "cre")),
     person("Adri van Os", role = "cph", comment = "Author 'antiword' utility")
