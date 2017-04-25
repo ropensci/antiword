@@ -28,12 +28,14 @@ antiword <- function(file = NULL, format = FALSE){
   setwd(bindir)
   postfix <- if(is_windows()) .Machine$sizeof.pointer * 8
   path <- file.path(bindir, paste0("antiword", postfix))
-  out <- rawConnection(raw(0), "r+")
-  on.exit(close(out), add = TRUE)
-  if(sys::exec_wait(path, args, std_out = out) == 0){
-    return(rawToChar(rawConnectionValue(out)))
+  out <- sys::exec_internal(path, args, error = FALSE)
+  if(out$status == 0){
+    if(length(out$stderr))
+      cat(rawToChar(out$stderr), file = stderr())
+    return(rawToChar(out$stdout))
   }
-  stop("System call to 'antiword' failed")
+  stop(sprintf("System call to 'antiword' failed (%d): %s",
+               out$status, rawToChar(out$stderr)), call. = FALSE)
 }
 
 is_windows <- function(){
