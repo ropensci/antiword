@@ -15,16 +15,18 @@ antiword <- function(file = NULL, format = FALSE){
       utils::download.file(file, tmp, mode = "wb")
       file <- tmp
     }
+    file <- normalizePath(file, mustWork = TRUE)
+    # Path with spaces need shQuote() on Windows, see https://github.com/jeroen/sys/issues/4
     c(
       ifelse(isTRUE(format), "-f", "-t"),
-      shQuote(normalizePath(file, mustWork = TRUE))
+      ifelse(is_windows(), shQuote(file), file)
     )
   }
   wd <- getwd()
   on.exit(setwd(wd))
   bindir <- system.file("bin", package = "antiword")
   setwd(bindir)
-  postfix <- if(identical(.Platform$OS.type, "windows")) .Machine$sizeof.pointer * 8
+  postfix <- if(is_windows()) .Machine$sizeof.pointer * 8
   path <- file.path(bindir, paste0("antiword", postfix))
   out <- rawConnection(raw(0), "r+")
   on.exit(close(out), add = TRUE)
@@ -32,4 +34,8 @@ antiword <- function(file = NULL, format = FALSE){
     return(rawToChar(rawConnectionValue(out)))
   }
   stop("System call to 'antiword' failed")
+}
+
+is_windows <- function(){
+  identical(.Platform$OS.type, "windows")
 }
