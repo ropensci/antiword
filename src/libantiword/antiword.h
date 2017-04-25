@@ -194,7 +194,7 @@
 
 
 /* Jeroen 2017: Hardcode local path */
-#define GLOBAL_ANTIWORD_DIR	"./share/antiword"
+#define GLOBAL_ANTIWORD_DIR	"../share/antiword"
 #define ANTIWORD_DIR		".antiword"
 #define FONTNAMES_FILE		"fontnames"
 

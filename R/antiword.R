@@ -17,16 +17,15 @@ antiword <- function(file = NULL, format = FALSE){
     }
     c(
       ifelse(isTRUE(format), "-f", "-t"),
-      normalizePath(file, mustWork = TRUE)
+      shQuote(normalizePath(file, mustWork = TRUE))
     )
   }
   wd <- getwd()
   on.exit(setwd(wd))
-  setwd(system.file("bin", .Platform$r_arch, package = "antiword"))
-  path <- file.path(
-    system.file("bin", .Platform$r_arch, package = "antiword"),
-    "antiword"
-  )
+  bindir <- system.file("bin", package = "antiword")
+  setwd(bindir)
+  postfix <- if(identical(.Platform$OS.type, "windows")) .Machine$sizeof.pointer * 8
+  path <- file.path(bindir, paste0("antiword", postfix))
   out <- rawConnection(raw(0), "r+")
   on.exit(close(out), add = TRUE)
   if(sys::exec_wait(path, args, std_out = out) == 0){

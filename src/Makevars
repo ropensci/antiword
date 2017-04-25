@@ -1,4 +1,4 @@
-INSTDIR=../inst/bin${R_ARCH}
+INSTDIR=../inst
 
 LIBANTIWORD	= \
 	libantiword/main_u.o libantiword/asc85enc.o libantiword/blocklist.o libantiword/chartrans.o \
@@ -18,11 +18,10 @@ LIBANTIWORD	= \
 all: clean antiword
 
 antiword: $(LIBANTIWORD)
-	$(CC) $(CPPFLAGS) $(CFLAGS) -o antiword $(LIBANTIWORD)
-	mkdir -p $(INSTDIR)
-	cp -f antiword $(INSTDIR)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -o antiword$(WIN) $(LIBANTIWORD)
+	mkdir -p $(INSTDIR)/bin
+	cp -f antiword$(WIN) $(INSTDIR)/bin
 	cp -Rf share $(INSTDIR)
 
 clean:
-	rm -Rf $(INSTDIR)
 	rm -f $(SHLIB) $(OBJECTS) $(LIBANTIWORD) antiword
