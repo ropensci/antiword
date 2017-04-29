@@ -16,6 +16,6 @@ Wraps the antiword utility. Takes a path to an word file and returns
 text from the document.
 }
 \examples{
-text <- antiword("http://homepages.inf.ed.ac.uk/neilb/TestWordDoc.doc")
+text <- antiword("https://jeroen.github.io/files/UDHR-english.doc")
 cat(text)
 }

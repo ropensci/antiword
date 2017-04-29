@@ -6,7 +6,7 @@
 #' @export
 #' @param file path or url to your word file
 #' @param format format the output text (-f parameter)
-#' @examples text <- antiword("http://homepages.inf.ed.ac.uk/neilb/TestWordDoc.doc")
+#' @examples text <- antiword("https://jeroen.github.io/files/UDHR-english.doc")
 #' cat(text)
 antiword <- function(file = NULL, format = FALSE){
   args <- if(length(file)){
