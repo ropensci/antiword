@@ -719,7 +719,7 @@ szGetAuthor(void)
 const char *
 szGetLastSaveDtm(void)
 {
-	static char	szTime[12];
+	static char	szTime[24];
 	struct tm	*pTime;
 
 	if (tLastSaveDtm == (time_t)-1) {
@@ -740,7 +740,7 @@ szGetLastSaveDtm(void)
 const char *
 szGetModDate(void)
 {
-	static char	szTime[20];
+	static char	szTime[40];
 	struct tm	*pTime;
 
 	if (tLastSaveDtm == (time_t)-1) {
@@ -762,7 +762,7 @@ szGetModDate(void)
 const char *
 szGetCreationDate(void)
 {
-	static char	szTime[20];
+	static char	szTime[40];
 	struct tm	*pTime;
 
 	if (tCreateDtm == (time_t)-1) {

@@ -1,3 +1,6 @@
+1.2
+  - Fix gcc8 warning (requested by CRAN)
+
 1.1
   - Windows: shQuote() path to file to make it work for paths with spaces
   - Capture error messages sent to stderr() by antiword

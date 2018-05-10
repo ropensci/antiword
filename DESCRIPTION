@@ -1,11 +1,11 @@
 Package: antiword
 Type: Package
 Title: Extract Text from Microsoft Word Documents
-Version: 1.1
+Version: 1.2
 Authors@R: c(
-    person("Jeroen", "Ooms", ,"jeroen@berkeley.edu", role = c("aut", "cre")),
-    person("Adri van Os", role = "cph", comment = "Author 'antiword' utility")
-  )
+    person("Jeroen", "Ooms", ,"jeroen@berkeley.edu", role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0002-4035-0289")),
+    person("Adri van Os", role = "cph", comment = "Author 'antiword' utility"))
 Description: Wraps the 'AntiWord' utility to extract text from Microsoft
     Word documents. The utility only supports the old 'doc' format, not the 
     new xml based 'docx' format. Use the 'xml2' package to read the latter.

@@ -15,13 +15,15 @@ LIBANTIWORD	= \
 	libantiword/worddos.o libantiword/wordlib.o libantiword/wordmac.o libantiword/wordole.o \
 	libantiword/wordwin.o libantiword/xmalloc.o libantiword/xml.o
 
-all: clean antiword
+ANTIWORD = antiword$(WIN)
 
-antiword: $(LIBANTIWORD)
-	$(CC) $(CPPFLAGS) $(CFLAGS) -o antiword$(WIN) $(LIBANTIWORD)
+all: clean $(ANTIWORD)
+
+$(ANTIWORD): $(LIBANTIWORD)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -o $(ANTIWORD) $(LIBANTIWORD)
 	mkdir -p $(INSTDIR)/bin
-	cp -f antiword$(WIN) $(INSTDIR)/bin
-	cp -Rf share $(INSTDIR)
+	cp -f $(ANTIWORD) $(INSTDIR)/bin
+	cp -Rf share $(INSTDIR)/
 
 clean:
-	rm -f $(SHLIB) $(OBJECTS) $(LIBANTIWORD) antiword
+	rm -f $(SHLIB) $(OBJECTS) $(LIBANTIWORD) $(ANTIWORD)
