@@ -719,7 +719,7 @@ szGetAuthor(void)
 const char *
 szGetLastSaveDtm(void)
 {
-	static char	szTime[24];
+	static char	szTime[40];
 	struct tm	*pTime;
 
 	if (tLastSaveDtm == (time_t)-1) {
