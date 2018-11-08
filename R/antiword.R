@@ -17,10 +17,7 @@ antiword <- function(file = NULL, format = FALSE){
     }
     file <- normalizePath(file, mustWork = TRUE)
     # Path with spaces need shQuote() on Windows, see https://github.com/jeroen/sys/issues/4
-    c(
-      ifelse(isTRUE(format), "-f", "-t"),
-      ifelse(is_windows(), shQuote(file), file)
-    )
+    c(ifelse(isTRUE(format), "-f", "-t"), file)
   }
   wd <- getwd()
   on.exit(setwd(wd))
