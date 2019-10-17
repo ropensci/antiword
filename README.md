@@ -14,7 +14,7 @@ new xml based `docx` format.
 
 ## Installation
 
-Install from CRAN:
+Install the package directly from CRAN:
 
 ```r
 install.packages("antiword")
