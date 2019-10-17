@@ -20,7 +20,7 @@ Install the package directly from CRAN:
 install.packages("antiword")
 ```
 
-## Hello World
+## Example Usage
 
 The function has only a single function `antiword()`. It takes either a local 
 file path or a URL to a word document:
