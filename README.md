@@ -10,7 +10,7 @@
 
 Wraps the [AntiWord](http://www.winfield.demon.nl/) utility to extract text from 
 Microsoft Word documents. The utility only supports the old `doc` format, not the 
-new xml based `docx` format.
+new xml based `docx` format. Use the 'xml2' package to read the latter.
 
 ## Installation
 
@@ -45,3 +45,4 @@ Every person and nation is asked to support the understanding and respect
 for these rights, and to take steps to make sure that they are recognised
 and observed everywhere, for all people.
 ```
+
