@@ -46,5 +46,4 @@ for these rights, and to take steps to make sure that they are recognised
 and observed everywhere, for all people.
 ```
 
-This package is part of rOpenSci! :)
-
+This package is part of rOpenSci!
