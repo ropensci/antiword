@@ -47,3 +47,4 @@ and observed everywhere, for all people.
 ```
 
 This package is part of rOpenSci! :)
+
