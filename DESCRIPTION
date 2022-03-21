@@ -13,7 +13,7 @@ License: GPL-2
 Encoding: UTF-8
 Imports: sys (>= 2.0)
 RoxygenNote: 6.0.1
-URL: https://docs.ropensci.org/antiword (website),
+URL: https://docs.ropensci.org/antiword/ (website),
     https://github.com/ropensci/antiword (devel)
     http://www.winfield.demon.nl (upstream)
-BugReports: http://github.com/ropensci/antiword/issues
+BugReports: https://github.com/ropensci/antiword/issues
