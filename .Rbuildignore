@@ -6,3 +6,4 @@
 ^appveyor\.yml$
 ^.travis.yml$
 ^README.md$
+^\.github$
