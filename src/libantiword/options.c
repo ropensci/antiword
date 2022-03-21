@@ -180,7 +180,7 @@ pOpenCharacterMappingFile(const char *szLeafname)
 	FILE	*pFile;
 	const char	*szHome, *szAntiword, *szSuffix;
 	size_t	tFilenameLen;
-	char	szMappingFile[PATH_MAX+1];
+	char	*szMappingFile = malloc(PATH_MAX+1);
 #endif /* !__riscos */
 
 	if (szLeafname == NULL || szLeafname[0] == '\0') {
