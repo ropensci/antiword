@@ -6,14 +6,12 @@ Authors@R: c(
     person("Jeroen", "Ooms", ,"jeroen@berkeley.edu", role = c("aut", "cre"),
       comment = c(ORCID = "0000-0002-4035-0289")),
     person("Adri van Os", role = "cph", comment = "Author 'antiword' utility"))
-Description: Wraps the 'AntiWord' utility to extract text from Microsoft
-    Word documents. The utility only supports the old 'doc' format, not the 
-    new xml based 'docx' format. Use the 'xml2' package to read the latter.
+Description: Wraps the 'AntiWord' utility <http://www.winfield.demon.nl> to 
+    extract text from Microsoft  Word documents. The utility only supports the 
+    old 'doc' format, not the new xml based 'docx' format. Use the 'xml2'
+    package to read the latter.
+Imports: sys (>= 2.0)
+URL: https://docs.ropensci.org/antiword/
+BugReports: https://github.com/ropensci/antiword/issues
 License: GPL-2
 Encoding: UTF-8
-Imports: sys (>= 2.0)
-RoxygenNote: 6.0.1
-URL: https://docs.ropensci.org/antiword/ (website),
-    https://github.com/ropensci/antiword (devel)
-    http://www.winfield.demon.nl (upstream)
-BugReports: https://github.com/ropensci/antiword/issues
