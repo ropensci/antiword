@@ -26,4 +26,4 @@ $(ANTIWORD): $(LIBANTIWORD)
 	cp -Rf share $(INSTDIR)/
 
 clean:
-	rm -f $(SHLIB) $(OBJECTS) $(LIBANTIWORD) $(ANTIWORD)
+	rm -f $(LIBANTIWORD) $(ANTIWORD)
