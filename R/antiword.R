@@ -23,8 +23,7 @@ antiword <- function(file = NULL, format = FALSE){
   on.exit(setwd(wd))
   bindir <- system.file("bin", package = "antiword")
   setwd(bindir)
-  postfix <- if(is_windows()) .Machine$sizeof.pointer * 8
-  path <- file.path(bindir, paste0("antiword", postfix))
+  path <- file.path(bindir, "antiword")
   out <- sys::exec_internal(path, args, error = FALSE)
   if(out$status == 0){
     if(length(out$stderr))
@@ -33,8 +32,4 @@ antiword <- function(file = NULL, format = FALSE){
   }
   stop(sprintf("System call to 'antiword' failed (%d): %s",
                out$status, rawToChar(out$stderr)), call. = FALSE)
-}
-
-is_windows <- function(){
-  identical(.Platform$OS.type, "windows")
 }
