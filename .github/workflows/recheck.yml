@@ -32,9 +32,7 @@ jobs:
           mv *.tar.gz newpkg/
           rm -Rf source
 
-
       - name: Get old version of package
-        if: matrix.check == 'old'
         shell: Rscript {0}
         run: |
           dir.create("oldpkg")
