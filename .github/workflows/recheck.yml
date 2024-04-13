@@ -45,8 +45,8 @@ jobs:
       - name: Get file names
         id: filenames
         run: |
-          echo "oldfile=$(ls oldpkg/*.tar.gz)" >> "$GITHUB_OUTPUT"
-          echo "newfile=$(ls newpkg/*.tar.gz)" >> "$GITHUB_OUTPUT"
+          echo "oldfile=$(cd oldpkg; echo *.tar.gz)" >> "$GITHUB_OUTPUT"
+          echo "newfile=$(cd newpkg; echo *.tar.gz)" >> "$GITHUB_OUTPUT"
 
       - name: Save package and library
         uses: actions/cache/save@v4
@@ -60,7 +60,7 @@ jobs:
   checks:
     needs: prepare
     runs-on: ubuntu-latest
-    name: Recheck for ${{matrix.check == 'oldpkg' && needs.prepare.outputs.oldfile || needs.prepare.outputs.newfile}}
+    name: Recheck ${{matrix.check}} (${{matrix.check == 'oldpkg' && needs.prepare.outputs.oldfile || needs.prepare.outputs.newfile}})
     container: ghcr.io/r-universe-org/recheck
     strategy:
       matrix:
