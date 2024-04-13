@@ -60,7 +60,7 @@ jobs:
   checks:
     needs: prepare
     runs-on: ubuntu-latest
-    name: Recheck ${{matrix.check}} (${{matrix.check == 'oldpkg' && needs.prepare.outputs.oldfile || needs.prepare.outputs.newfile}})
+    name: Recheck ${{matrix.check == 'oldpkg' && needs.prepare.outputs.oldfile || needs.prepare.outputs.newfile}} (${{matrix.check}})
     container: ghcr.io/r-universe-org/recheck
     strategy:
       matrix:
