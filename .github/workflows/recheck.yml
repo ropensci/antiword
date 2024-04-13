@@ -110,4 +110,4 @@ jobs:
         shell: Rscript {0}
         run: |
           print(list.files())
-          print(check_packages_in_dir_changes("newpkg-checklogs", "oldpkg-checklogs"))
+          print(tools::check_packages_in_dir_changes("newpkg-checklogs", "oldpkg-checklogs"))
