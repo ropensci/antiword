@@ -1,0 +1,93 @@
+name: Run a recheck
+
+on:
+  push:
+  pull_request:
+
+env:
+  R_LIBS_USER: ${{github.workspace}}/pkglib
+
+jobs:
+  prepare:
+    name: Get package and dependencies
+    runs-on: ubuntu-latest
+    container: ghcr.io/r-universe-org/recheck
+    steps:
+      - name: prepare
+        run: |
+          mkdir -p $R_LIBS_USER
+          R -e ".libPaths()"
+
+      - name: clone
+        run: git clone --depth=1 https://github.com/${{github.repository}} source
+
+      - name: download dependencies
+        run: recheck::install_recheck_deps('source')
+        shell: Rscript {0}
+
+      - name: build source package
+        run: |
+          mkdir newpkg
+          R CMD build source
+          mv *.tar.gz newpkg/
+          rm -Rf source
+
+
+      - name: Get old version of package
+        if: matrix.check == 'old'
+        shell: Rscript {0}
+        run: |
+          dir.create("oldpkg")
+          pkg <- sub("_.*", "", list.files("newpkg"))
+          download.packages(pkg, "oldpkg", repos = "https://cran.r-project.org")
+
+      - name: Save package and library
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            pkglib
+            newpkg
+            oldpkg
+          key: ${{ runner.os }}-${{ github.run_id }}-${{github.run_attempt}}
+
+  checks:
+    needs: prepare
+    runs-on: ubuntu-latest
+    container: ghcr.io/r-universe-org/recheck
+    strategy:
+      matrix:
+        check: [ 'oldpkg', 'newpkg' ]
+    steps:
+      - name: Download package and library
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            pkglib
+            newpkg
+            oldpkg
+          key: ${{ runner.os }}-${{ github.run_id }}-${{github.run_attempt}}
+
+      - name: build source package
+        run: ls -ltrR
+
+      - name: Run checks
+        shell: Rscript {0}
+        run: |
+          checkdir <- "${{matrix.check}}"
+          options(repos = c(CRAN = 'https://cloud.r-project.org'))
+          reverse <- list(repos = 'https://cloud.r-project.org', which = "strong")
+          tools::check_packages_in_dir(checkdir, reverse = reverse, Ncpus = parallel::detectCores())
+          details <- tools::check_packages_in_dir_details(checkdir)
+          write.csv(details, file.path(checkdir, 'check-details.csv'))
+          writeLines(paste(format(details), collapse = "\n\n"), file.path(checkdir, 'check-details.txt'))
+          tools::summarize_check_packages_in_dir_results(checkdir)
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: checklogs
+          path: |
+            ${{matrix.check}}/*/*.log
+            ${{matrix.check}}/*/*.out
+            ${{matrix.check}}/*/*.Rout
+            ${{matrix.check}}/*/*.fail
+            ${{matrix.check}}/check-details.*
