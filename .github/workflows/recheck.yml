@@ -12,6 +12,9 @@ jobs:
     name: Get package and dependencies
     runs-on: ubuntu-latest
     container: ghcr.io/r-universe-org/recheck
+    outputs:
+      oldfile: ${{ steps.filenames.outputs.oldfile }}
+      newfile: ${{ steps.filenames.outputs.newfile }}
     steps:
       - name: prepare
         run: |
@@ -40,6 +43,7 @@ jobs:
           download.packages(pkg, "oldpkg", repos = "https://cran.r-project.org")
 
       - name: Get file names
+        id: filenames
         run: |
           echo "oldfile=$(ls oldpkg/*.tar.gz)" >> "$GITHUB_OUTPUT"
           echo "newfile=$(ls newpkg/*.tar.gz)" >> "$GITHUB_OUTPUT"
