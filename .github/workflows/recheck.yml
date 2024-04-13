@@ -9,7 +9,7 @@ env:
 
 jobs:
   prepare:
-    name: Get package and dependencies
+    name: Prepare dependencies
     runs-on: ubuntu-latest
     container: ghcr.io/r-universe-org/recheck
     outputs:
@@ -99,3 +99,16 @@ jobs:
             ${{matrix.check}}/*/*.Rout
             ${{matrix.check}}/*/*.fail
             ${{matrix.check}}/check-details.*
+
+  results:
+    name: Compare results
+    needs: checks
+    runs-on: ubuntu-latest
+    container: ghcr.io/r-hub/r-minimal/r-minimal:latest
+    steps:
+      - name: Download log files
+        uses: actions/download-artifact@v4
+        with:
+          name: |
+            oldpkg-checklogs
+            newpkg-checklogs
