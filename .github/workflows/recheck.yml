@@ -109,5 +109,9 @@ jobs:
       - name: Get old version of package
         shell: Rscript {0}
         run: |
-          print(list.files())
-          print(tools::check_packages_in_dir_changes("newpkg-checklogs", "oldpkg-checklogs"))
+          changes <- tools::check_packages_in_dir_changes("newpkg-checklogs", "oldpkg-checklogs")
+          if(nrow(changes)){
+            print(changes)
+          } else {
+            cat("No changes, all good\n")
+          }
