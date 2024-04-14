@@ -106,7 +106,7 @@ jobs:
       - name: Download log files
         uses: actions/download-artifact@v4
 
-      - name: Get old version of package
+      - name: Compare results
         shell: Rscript {0}
         run: |
           changes <- tools::check_packages_in_dir_changes("newpkg-checklogs", "oldpkg-checklogs")
