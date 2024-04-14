@@ -110,8 +110,10 @@ jobs:
       - name: Compare results
         shell: Rscript {0}
         run: |
+          tools::summarize_check_packages_in_dir_results("newpkg-checklogs")
           changes <- tools::check_packages_in_dir_changes("newpkg-checklogs", "oldpkg-checklogs")
           if(nrow(changes)){
+            cat("Changes:\n")
             print(changes)
           } else {
             cat("No changes, all good\n")
