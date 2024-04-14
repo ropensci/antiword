@@ -81,6 +81,7 @@ jobs:
           checkdir <- "${{matrix.check}}"
           options(repos = c(CRAN = 'https://cloud.r-project.org'))
           reverse <- list(repos = 'https://cloud.r-project.org', which = "strong")
+          Sys.unsetenv(c("CI", "GITHUB_ACTIONS"))
           tools::check_packages_in_dir(checkdir, reverse = reverse, Ncpus = parallel::detectCores())
           details <- tools::check_packages_in_dir_details(checkdir)
           write.csv(details, file.path(checkdir, 'check-details.csv'))
