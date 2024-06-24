@@ -39,6 +39,12 @@ jobs:
           extra-packages: any::rcmdcheck, curl
           needs: check
 
+      - name: Test
+        run: |
+          curl::curl_download('https://community.r-multiverse.org/src/contrib/PACKAGES.gz', 'PACKAGES.gz')
+          print(read.dcf('PACKAGES.gz'))
+        shell: Rscript {0}
+
       - uses: r-lib/actions/check-r-package@v2
         with:
           upload-snapshots: true
