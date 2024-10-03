@@ -10,7 +10,8 @@ Description: Wraps the 'AntiWord' utility to extract text from Microsoft Word
     documents. The utility only supports the old 'doc' format, not the new xml 
     based 'docx' format. Use the 'xml2' package to read the latter.
 Imports: sys (>= 2.0)
-URL: https://docs.ropensci.org/antiword/
+URL: https://docs.ropensci.org/antiword/,
+    https://ropensci.r-universe.dev/antiword
 BugReports: https://github.com/ropensci/antiword/issues
 License: GPL-2
 Encoding: UTF-8
