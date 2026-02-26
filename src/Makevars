@@ -17,7 +17,7 @@ LIBANTIWORD	= \
 
 ANTIWORD = antiword
 
-all: clean $(ANTIWORD)
+all: printcc $(ANTIWORD)
 
 $(ANTIWORD): $(LIBANTIWORD)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -o $(ANTIWORD) $(LIBANTIWORD)
@@ -27,3 +27,6 @@ $(ANTIWORD): $(LIBANTIWORD)
 
 clean:
 	rm -f $(LIBANTIWORD) $(ANTIWORD)
+
+printcc:
+	@echo "using C compiler: '`$(CC) --version | head -1`'" || true
